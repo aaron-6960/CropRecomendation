@@ -14,6 +14,10 @@ class Features(BaseModel):
     ph: float
     rainfall: float
 
+@app.get("/")
+def index():
+    return 12
+
 
 @app.post("/prediction")
 def Prediction(data: Features):
