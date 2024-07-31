@@ -19,11 +19,11 @@ class Features(BaseModel):
     rainfall: float
 
 @app.get("/")
-def index():
+async def index():
     return {"message": "Welcome to the Crop Prediction API"}
 
 @app.post("/prediction", response_model=dict)
-def prediction(data: Features):
+async def prediction(data: Features):
     try:
         result = predict_crop(data.N, data.P, data.K, data.temperature, data.humidity, data.ph, data.rainfall)
         logger.info(f"Prediction result: {result}")
