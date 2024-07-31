@@ -31,4 +31,24 @@ def prediction(data: Features):
     except Exception as e:
         logger.error(f"Error during prediction: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
+    
+
+    
+@app.get("/prediction/{N}/{P}/{K}/{temperature}/{humidity}/{ph}/{rainfall}", response_model=dict)
+def prediction(
+    N: int,
+    P: int,
+    K: int,
+    temperature: float,
+    humidity: float,
+    ph: float,
+    rainfall: float
+):
+    try:
+        result = predict_crop(N, P, K, temperature, humidity, ph, rainfall)
+        logger.info(f"Prediction result: {result}")
+        return {"prediction": result}
+    except Exception as e:
+        logger.error(f"Error during prediction: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
