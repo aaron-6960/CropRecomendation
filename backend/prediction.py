@@ -1,10 +1,15 @@
 import pandas as pd
+import os
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 
-#import pandas,read and analys the dataset
-crop_data = pd.read_csv('./Crop_recommendation.csv')
+# Determine the absolute path of the CSV file
+current_dir = os.path.dirname(__file__)
+csv_path = os.path.join(current_dir, 'Crop_recommendation.csv')
+
+# Load the data
+crop_data = pd.read_csv(csv_path)
 
 #since label is an object,encode it to integer value
 label_encoder = LabelEncoder()
