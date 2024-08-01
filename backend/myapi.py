@@ -22,7 +22,7 @@ class Features(BaseModel):
 def index():
     return {"message": "Welcome to the Crop Prediction API"}
 
-@app.post("/prediction", response_model=dict)
+@app.post("/", response_model=dict)
 def prediction(data: Features):
     try:
         result = predict_crop(data.N, data.P, data.K, data.temperature, data.humidity, data.ph, data.rainfall)
@@ -33,7 +33,7 @@ def prediction(data: Features):
         raise HTTPException(status_code=500, detail="Internal Server Error")
     
 
-    
+
 @app.get("/prediction/{N}/{P}/{K}/{temperature}/{humidity}/{ph}/{rainfall}", response_model=dict)
 def prediction(
     N: int,
