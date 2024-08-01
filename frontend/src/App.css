@@ -1,5 +1,11 @@
+/* Hide the spinner (scroller) in number input fields for WebKit browsers (Chrome, Safari) */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* Hide the spinner in number input fields for Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
