@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, createHashRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import Home from './components/home';
 import Chemicals from './components/chemicals';
