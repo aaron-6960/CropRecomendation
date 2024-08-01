@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider, createHashRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import Home from './components/home';
 import Chemicals from './components/chemicals';
@@ -8,18 +8,20 @@ import Crop from './components/crop';
 import App from './App';
 import './index.css';
 
+
 const router = createHashRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "", element: <Home /> },
+      { path: "home", element: <Home /> },
       { path: "chemicals", element: <Chemicals /> },
       { path: "weather", element: <Weather /> },
       { path: "crop", element: <Crop /> },
     ],
   },
 ]);
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
