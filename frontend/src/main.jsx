@@ -8,12 +8,12 @@ import Crop from './components/crop';
 import App from './App';
 import './index.css';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "home", element: <Home /> },
+      { path: "", element: <Home /> },
       { path: "chemicals", element: <Chemicals /> },
       { path: "weather", element: <Weather /> },
       { path: "crop", element: <Crop /> },
