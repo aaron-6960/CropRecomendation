@@ -34,7 +34,7 @@ def index():
     return {"message": "Welcome to the Crop Prediction API"}
 
 @app.post("/", response_model=dict)
-def prediction(data: Features):
+def prediction(data: Features):    
     try:
         result = predict_crop(data.N, data.P, data.K, data.temperature, data.humidity, data.ph, data.rainfall)
         logger.info(f"Prediction result: {result}")

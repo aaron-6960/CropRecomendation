@@ -20,6 +20,8 @@ function Weather() {
     phosphorus,
     potassium,
     ph,
+    crop,
+    setCrop,
   } = useContext(FeaturesContext);
 
   const NextPage = async (e) => {
@@ -38,11 +40,11 @@ function Weather() {
     try {
       console.log(12)
       const res = await axios.post(
-        "https://croprecomendation.onrender.com/",
+        import.meta.env.VITE_PREDICTION_API_URL,
         data
       );
-      console.log(12)
-      console.log(res.data.prediction)
+      console.log(res.data)
+      setCrop(res.data.prediction);
       navigate('/crop');
     } catch (error) {
       console.error('Error making POST request:', error);

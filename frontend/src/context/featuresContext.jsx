@@ -10,6 +10,7 @@ export const FeaturesProvider = ({ children }) => {
   const [humidity, setHumidity] = useState("");
   const [rainfall, setRainfall] = useState("");
   const [crop,setCrop] = useState("")
+  
   return (
     <FeaturesContext.Provider
       value={{
