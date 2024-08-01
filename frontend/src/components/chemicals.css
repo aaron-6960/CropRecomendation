@@ -1,0 +1,161 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; 
+}
+
+.Chemicals {
+    background-image: url('/pictures/chemicals.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    margin: 0; 
+    display: flex;
+    flex-direction: column;
+    padding-top: 180px;
+    padding-left: 600px;
+    overflow: hidden; 
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nitrogen {
+    margin-left: 50px;
+}
+
+.nitrogen label {
+    font-size: 25px;
+    color: #590402;
+    margin-left: 10px;
+}
+
+.NitrogenInput {
+    margin-top: 10px;
+    height: 35px;
+    font-size: 18px;
+    color: #590402;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    border: transparent;
+    background:#C8B5A0 ;
+    border-radius: 20px;
+    outline: none;
+}
+
+.phosphorus {
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.phosphorus label {
+    font-size: 25px;
+    color: #590402;
+    margin-left: 10px;
+}
+
+.PhosphorusInput {
+    margin-top: 10px;
+    height: 35px;
+    font-size: 18px;
+    color: #590402;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    border: transparent;
+    background:#C8B5A0 ;
+    border-radius: 20px;
+    outline: none;
+}
+
+.potassium {
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.potassium label {
+    font-size: 25px;
+    color: #590402;
+    margin-left: 10px;
+}
+
+.PotassiumInput {
+    margin-top: 10px;
+    height: 35px;
+    font-size: 18px;
+    color: #590402;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    border: transparent;
+    background:#C8B5A0 ;
+    border-radius: 20px;
+    outline: none;
+}
+
+.ph {
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.ph label {
+    font-size: 25px;
+    color: #590402;
+    margin-left: 10px;
+}
+
+.PhInput {
+    margin-top: 10px;
+    height: 35px;
+    font-size: 18px;
+    color: #590402;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    border: transparent;
+    background:#C8B5A0 ;
+    border-radius: 20px;
+    outline: none;
+
+}
+
+.chemicals-buttons {
+    margin-top: 40px;
+    margin-left: 20px;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.previous {
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    background-color: #590402;
+    color: #C8B5A0;
+    cursor: pointer;
+}
+.previous:hover{
+    background-color: #875730;
+}
+
+.next {
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    background-color: #590402;
+    color: #C8B5A0;
+    cursor: pointer;
+}
+.next:hover{
+    background-color: #875730;
+}

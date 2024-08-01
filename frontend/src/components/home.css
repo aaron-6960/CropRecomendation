@@ -1,0 +1,31 @@
+.home-container {
+    background-image: url('/pictures/home.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    margin: 0; 
+  }
+  
+
+
+
+  
+  .home-button {
+    background-color: rgb(18, 12, 12);
+    font-family: Arial, Helvetica, sans-serif;
+    width: 150px;
+    height: 50px;
+    padding: 10px 20px;
+    margin: 350px 55px 100px 300px;
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .home-button:hover{
+    background-color: rgb(44, 18, 18);
+  }
+  

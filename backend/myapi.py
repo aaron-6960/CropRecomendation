@@ -2,6 +2,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from .prediction import predict_crop
 import logging
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 
@@ -17,6 +19,15 @@ class Features(BaseModel):
     humidity: float
     ph: float
     rainfall: float
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # List of origins allowed to make requests to this API
+    allow_credentials=True,
+    allow_methods=["*"],  # List of HTTP methods allowed (e.g., GET, POST, PUT, DELETE)
+    allow_headers=["*"],  # List of HTTP headers allowed
+)
 
 @app.get("/")
 def index():
