@@ -39,13 +39,13 @@ function Weather() {
 
     try {
       console.log(12)
+      navigate('/crop');
       const res = await axios.post(
         import.meta.env.VITE_PREDICTION_API_URL,
         data
       );
       console.log(res.data)
       setCrop(res.data.prediction);
-      navigate('/crop');
     } catch (error) {
       console.error('Error making POST request:', error);
     }
