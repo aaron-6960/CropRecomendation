@@ -43,9 +43,10 @@ html, body {
     padding-left: 10px;
     margin-bottom: 15px;
     border: transparent;
-    background:#C8B5A0 ;
+    background: #C8B5A0;
     border-radius: 20px;
     outline: none;
+    border-bottom: solid 2px #590402;
 }
 
 .humidity {
@@ -67,9 +68,10 @@ html, body {
     padding-left: 10px;
     margin-bottom: 15px;
     border: transparent;
-    background:#C8B5A0 ;
+    background: #C8B5A0;
     border-radius: 20px;
     outline: none;
+    border-bottom: solid 2px #590402;
 }
 
 .rainfall {
@@ -91,9 +93,21 @@ html, body {
     padding-left: 10px;
     margin-bottom: 15px;
     border: transparent;
-    background:#C8B5A0 ;
+    background: #C8B5A0;
     border-radius: 20px;
     outline: none;
+    border-bottom: solid 2px #590402;
+}
+
+.RainfallInput.error, .HumidityInput.error, .TemperatureInput.error {
+    border-bottom: solid 2px red;
+}
+
+.error-message {
+    color: red;
+    margin-left: 50px;
+    font-size: 18px;
+    margin-top: 10px;
 }
 
 .weather-buttons {
@@ -105,7 +119,7 @@ html, body {
     justify-content: space-between;
 }
 
-.previous {
+button {
     width: 100px;
     height: 40px;
     border-radius: 20px;
@@ -115,22 +129,9 @@ html, body {
     background-color: #590402;
     color: #C8B5A0;
     cursor: pointer;
-}
-.previous:hover{
-    background-color: #875730;
+    transition: background-color 0.3s;
 }
 
-.next {
-    width: 100px;
-    height: 40px;
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    font-size: 15px;
-    background-color: #590402;
-    color: #C8B5A0;
-    cursor: pointer;
-}
-.next:hover{
+button:hover {
     background-color: #875730;
 }

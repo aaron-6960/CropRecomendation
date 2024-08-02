@@ -1,0 +1,37 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; 
+  }
+  
+  .Crop {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    margin: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+ 
+  .ReturnHomeButton {
+    margin-top: 500px;
+    width: 180px;
+    height: 50px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    background-color: #590402;
+    color: #C8B5A0;
+    cursor: pointer;
+  }
+  .ReturnHomeButton:hover {
+    background-color: #875730;
+  }
+  

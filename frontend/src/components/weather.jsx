@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./weather.css";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from "/src/pictures/weather.png";
 import { FeaturesContext } from "../context/featuresContext";
 import axios from "axios";
-
 
 function Weather() {
   const navigate = useNavigate();
@@ -24,33 +23,56 @@ function Weather() {
     setCrop,
   } = useContext(FeaturesContext);
 
+  const [error, setError] = useState('');
+  const [inputErrors, setInputErrors] = useState({
+    temperature: false,
+    humidity: false,
+    rainfall: false
+  });
+
   const NextPage = async (e) => {
     e.preventDefault();
 
-  const data = {
-    N:nitrogen,
-    P:phosphorus,
-    K:potassium,
-    ph,
-    rainfall,
-    humidity,
-    temperature,
-  };
+    const errors = {
+      temperature: !temperature,
+      humidity: !humidity,
+      rainfall: !rainfall
+    };
+
+    if (Object.values(errors).some(error => error)) {
+      setInputErrors(errors);
+      setError('Please input all the values.');
+      return;
+    } else {
+      setInputErrors({
+        temperature: false,
+        humidity: false,
+        rainfall: false
+      });
+      setError('');
+    }
+
+    const data = {
+      N: nitrogen,
+      P: phosphorus,
+      K: potassium,
+      ph,
+      rainfall,
+      humidity,
+      temperature,
+    };
 
     try {
-      console.log(12)
-      navigate('/crop');
       const res = await axios.post(
         import.meta.env.VITE_PREDICTION_API_URL,
         data
       );
-      console.log(res.data)
       setCrop(res.data.prediction);
+      navigate('/crop');
     } catch (error) {
       console.error('Error making POST request:', error);
     }
   };
-
 
   const PreviousPage = (e) => {
     e.preventDefault();
@@ -66,9 +88,9 @@ function Weather() {
         <div className="inputs">
           <div className="temperature">
             <label>Temperature : </label>
-            <br></br>
+            <br />
             <input
-              className="TemperatureInput"
+              className={`TemperatureInput ${inputErrors.temperature ? 'error' : ''}`}
               type="number"
               value={temperature}
               onChange={(e) => setTemperature(e.target.value)}
@@ -76,9 +98,9 @@ function Weather() {
           </div>
           <div className="humidity">
             <label>Humidity : </label>
-            <br></br>
+            <br />
             <input
-              className="HumidityInput"
+              className={`HumidityInput ${inputErrors.humidity ? 'error' : ''}`}
               type="number"
               value={humidity}
               onChange={(e) => setHumidity(e.target.value)}
@@ -86,20 +108,21 @@ function Weather() {
           </div>
           <div className="rainfall">
             <label>Rainfall : </label>
-            <br></br>
+            <br />
             <input
-              className="RainfallInput"
+              className={`RainfallInput ${inputErrors.rainfall ? 'error' : ''}`}
               type="number"
               value={rainfall}
               onChange={(e) => setRainfall(e.target.value)}
             />
           </div>
         </div>
+        {error && <div className="error-message">{error}</div>}
         <div className="weather-buttons">
           <button onClick={PreviousPage} type="button" className="previous">
             Back
           </button>
-          <button type="submit" className="previous">
+          <button type="submit" className="next">
             Next
           </button>
         </div>

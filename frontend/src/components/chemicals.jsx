@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './chemicals.css';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '/src/pictures/chemicals.png';
@@ -6,7 +6,7 @@ import { FeaturesContext } from '../context/featuresContext';
 
 function Chemicals() {
   const navigate = useNavigate();
-  
+
   const {
     nitrogen,
     setNitrogen,
@@ -18,12 +18,39 @@ function Chemicals() {
     setPh
   } = useContext(FeaturesContext);
 
-  const NextPage = (e) => {
+  const [error, setError] = useState('');
+  const [inputErrors, setInputErrors] = useState({
+    nitrogen: false,
+    phosphorus: false,
+    potassium: false,
+    ph: false
+  });
+
+  const handleNextPage = (e) => {
     e.preventDefault();
-    navigate('/weather');
+    const errors = {
+      nitrogen: !nitrogen,
+      phosphorus: !phosphorus,
+      potassium: !potassium,
+      ph: !ph
+    };
+
+    if (Object.values(errors).some(error => error)) {
+      setInputErrors(errors);
+      setError('Please input all the values.');
+    } else {
+      setInputErrors({
+        nitrogen: false,
+        phosphorus: false,
+        potassium: false,
+        ph: false
+      });
+      setError('');
+      navigate('/weather');
+    }
   };
 
-  const PreviousPage = (e) => {
+  const handlePreviousPage = (e) => {
     e.preventDefault();
     navigate('/home');
   };
@@ -33,54 +60,59 @@ function Chemicals() {
       className="Chemicals"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <form onSubmit={NextPage}>
+      <form onSubmit={handleNextPage}>
         <div className="inputs">
-          <div className="nitrogen">
-            <label>Nitrogen</label>
-            <br></br>
+          <div className="input-group">
+            <label htmlFor="nitrogen">Nitrogen</label>
+            <br />
             <input
-              className="NitrogenInput"
+              id="nitrogen"
+              className={`NitrogenInput ${inputErrors.nitrogen ? 'error' : ''}`}
               type="number"
               value={nitrogen}
               onChange={(e) => setNitrogen(e.target.value)}
             />
           </div>
-          <div className="phosphorus">
-            <label>Phosphorus</label>
-            <br></br>
+          <div className="input-group">
+            <label htmlFor="phosphorus">Phosphorus</label>
+            <br />
             <input
-              className="PhosphorusInput"
+              id="phosphorus"
+              className={`PhosphorusInput ${inputErrors.phosphorus ? 'error' : ''}`}
               type="number"
               value={phosphorus}
               onChange={(e) => setPhosphorus(e.target.value)}
             />
           </div>
-          <div className="potassium">
-            <label>Potassium</label>
-            <br></br>
+          <div className="input-group">
+            <label htmlFor="potassium">Potassium</label>
+            <br />
             <input
-              className="PotassiumInput"
+              id="potassium"
+              className={`PotassiumInput ${inputErrors.potassium ? 'error' : ''}`}
               type="number"
               value={potassium}
               onChange={(e) => setPotassium(e.target.value)}
             />
           </div>
-          <div className="ph">
-            <label>pH</label>
-            <br></br>
+          <div className="input-group">
+            <label htmlFor="ph">pH</label>
+            <br />
             <input
-              className="PhInput"
+              id="ph"
+              className={`PhInput ${inputErrors.ph ? 'error' : ''}`}
               type="number"
               value={ph}
               onChange={(e) => setPh(e.target.value)}
             />
           </div>
         </div>
+        {error && <div className="error-message">{error}</div>}
         <div className="chemicals-buttons">
-          <button className="previous" onClick={PreviousPage} type='button'>
+          <button className="previous" onClick={handlePreviousPage} type="button">
             Back
           </button>
-          <button className="next" type='submit'>
+          <button className="next" type="submit">
             Next
           </button>
         </div>
