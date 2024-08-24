@@ -34,7 +34,7 @@ async def ping_server():
     while True:
         try:
             async with httpx.AsyncClient() as client:
-                response = await client.get("https://scam-1.onrender.com/")
+                response = await client.get("https://scam-gx7m.onrender.com/")
                 if response.status_code == 200:
                     logger.info("Successfully pinged the server.")
                 else:
